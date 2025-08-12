@@ -1,6 +1,8 @@
  <!DOCTYPE html>
  <html><head>
- 	<title>SURAT PEMINJAMAN</title>
+ <title>
+    SURAT PEMINJAMAN <?= $pinjam['nama_peminjam']?>
+</title>
 
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -21,54 +23,54 @@
   $aset = $this->db->get_where('tbl_aset', ['kode' => $kode_aset])->row_array();
   ?>
   
-  <img src="<?= base_url('assets/images/logo/Logo-header.png') ?>" width="200px" align="center" />
-  <h4 style="font-weight:bold; margin-bottom: 10px; text-align: center;">PEMERINTAH KABUPATEN BREBES<br>
-  DINAS KOMUNIKASI INFORMATIKA DAN STATISTIK</h4>
-  <p style="font-style: italic; text-align: center;">Jl. MT Haryono No.76 Saditan Baru Kecamatan Brebes Kabupaten Brebes 52212</p>
+
+  <!-- <img src="<?= base_url('assets/images/logo/pankas.png') ?>" width="200px" align="center" /> -->
+  <h4 style="font-weight:bold; margin-bottom: 10px; text-align: center;">GPIB PANCARAN KASIH DEPOK<br> </h4>
+  <p style="font-style: italic; text-align: center;">Jl. Tole Iskandar No. 27 Depok 16415</p>
   <hr>
   <h4 style="font-weight:bold; margin-bottom: 10px; text-align: center;">SURAT PEMINJAMAN ASET</h4>
-
+  <!-- <?php var_dump($pinjam); ?> -->
   <p>Pada tanggal ini <?= date('H M Y') ?> saya yang bertanda tangan di bawah ini : </p>
-  <table border="0">
+  <table style="border: none;border-collapse: collapse; width: 50%;">
     <tr>
-      <td>Nama Peminjam</td>
-      <td>: </td>
-      <td><?= $pinjam['nama_peminjam'] ?></td>
+      <td style="border: none;">Nama Peminjam</td>
+      <td style="border: none;">: </td>
+      <td style="border: none; padding-left: 8px;"><?= $pinjam['nama_peminjam'] ?></td>
     </tr>
     <tr>
-      <td>Alamat</td>
-      <td>: </td>
-      <td><?= $pinjam['alamat_peminjam'] ?></td>
+      <td style="border: none;">Alamat</td>
+      <td style="border: none;">: </td>
+      <td style="border: none; padding-left: 8px;"><?= $pinjam['alamat_peminjam'] ?></td>
     </tr>
     <tr>
-      <td>No. HP</td>
-      <td>: </td>
-      <td><?= $pinjam['nohp_peminjam'] ?></td>
+      <td style="border: none;">No. HP</td>
+      <td style="border: none;">: </td>
+      <td style="border: none; padding-left: 8px;"><?= $pinjam['nohp_peminjam'] ?></td>
     </tr>
     <tr>
-      <td>Tanggal Peminjaman</td>
-      <td>: </td>
-      <td><?= $pinjam['tgl_peminjaman'] ?></td>
+      <td style="border: none;">Tanggal Peminjaman</td>
+      <td style="border: none;">: </td>
+      <td style="border: none; padding-left: 8px;"><?= $pinjam['tgl_peminjaman'] ?></td>
     </tr>
     <tr>
-      <td>Tanggal Pengembalian</td>
-      <td>: </td>
-      <td><?= $pinjam['tgl_pengembalian'] ?></td>
+      <td style="border: none;">Tanggal Pengembalian</td>
+      <td style="border: none;">: </td>
+      <td style="border: none; padding-left: 8px;"><?= $pinjam['tgl_pengembalian'] ?></td>
     </tr>
     <tr>
-      <td>Nama Aset Yang Dipinjam</td>
-      <td>: </td>
-      <td><?= $aset['nama_aset'] ?></td>
+      <td style="border: none;">Nama Aset Yang Dipinjam</td>
+      <td style="border: none;">: </td>
+      <td style="border: none; padding-left: 8px;"><?= $aset['nama_aset'] ?></td>
     </tr>
     <tr>
-      <td>Jumlah Barang</td>
-      <td>: </td>
-      <td><?= $pinjam['jml_barang'] ?> Unit</td>
+      <td style="border: none;">Jumlah Barang</td>
+      <td style="border: none;">: </td>
+      <td style="border: none; padding-left: 8px;"><?= $pinjam['jml_barang'] ?> Unit</td>
     </tr>
   </table>
   <br>
   <br>
-  <p>Dengan ini saya berhak dan memelihara barang ini dengan sebaik - baiknya, apabila ada kerusakan barang yang saya pinjam tersebut, saya berhak mengganti rugi atas perbaikan barang yang saya pinjam, dan apabila dalam pengembalian tidak sesuai tanggal yang telah di tentukan atau lewat dari tanggal pengembalian tersebut maka saya bersedia dikenakan denda Rp 10.0000 per hari.</p>
+  <p>Dengan ini saya berhak dan memelihara barang ini dengan sebaik-baiknya, apabila ada kerusakan barang yang saya pinjam tersebut, saya berhak mengganti rugi atas perbaikan barang yang saya pinjam, dan apabila dalam pengembalian tidak sesuai tanggal yang telah di tentukan atau lewat dari tanggal pengembalian tersebut maka saya bersedia dikenakan denda Rp 10.000 per hari.</p>
   <br>
   <br>
   <p>Demikian Surat Peminjaman ini yang telah dibuat, semoga ketentuan yang di telah dibuat dapat di pertanggung jawabkan dengan sebaik -baiknya.</p>

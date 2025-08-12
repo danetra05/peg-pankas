@@ -43,9 +43,19 @@
                       <td><?= $data['kode_aset'] ?></td>
                       <td><?= $data['tgl_pengembalian'] ?></td>
                       <td><?= $data['denda'] ?></td>
+                      <?php
+                      $today = date('Y-m-d');
+                      $tglKembali = $data['tgl_pengembalian'];
+                      $dendaPerHari = 1000;
+                      $denda = 0;
+
+                      if ($tglKembali < $today) {
+                        $selisih = (strtotime($today) - strtotime($tglKembali)) / 86400;
+                        $denda = $selisih * $dendaPerHari;
+                      }
+                    ?>
+                    <td>Rp<?= number_format($denda, 0, ',', '.') ?></td>
                       <td>
-
-
                         <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalhapus<?= $data['id'] ?>"><i class="fa fa-trash"></i></button>
                       </td>
                     </tr>

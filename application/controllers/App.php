@@ -290,32 +290,24 @@
 			$this->load->view('template/footer');
 		}
 
-		function cetak_aset(){
-
-			// $kode = $this->input->get('kode');
-			
-			// $data['pinjam'] = $this->db->get_where('tbl_peminjaman', ['kode' => $kode])->row_array();
+		public function cetak_aset() {
 			$data['aset'] = $this->db->get('tbl_aset')->result_array();
 			$data['kategori'] = $this->db->get('tbl_kategori')->result_array();
 			$data['kualitas'] = $this->db->get('tbl_kualitas')->result_array();
 			$data['lokasi'] = $this->db->get('tbl_lokasi')->result_array();
-
-			// $data['pinjam'] = $this->db->get('tbl_peminjaman')->row_array();
-
-			// panggil library yang kita buat sebelumnya yang bernama pdfgenerator
-			$this->load->library('pdfgenerator');
-        
-			// filename dari pdf ketika didownload
-			$file_pdf = 'laporan_aset';
-			// setting paper
-			$paper = 'A4';
-			//orientasi paper potrait / landscape
-			$orientation = "landscape";
 			
-			$html = $this->load->view('app/cetak_aset', $data, true);	    
-			
-			// run dompdf
-			$this->pdfgenerator->generate($html, $file_pdf,$paper,$orientation);
+			// Render HTML dari view
+			$html = $this->load->view('app/cetak_aset', $data, true);
+		
+			$this->load->library('dompdf_gen');
+			$dompdf = new Dompdf_gen(); // <-- buat objek sendiri
+			$dompdf->loadHtml($html);
+			$dompdf->setPaper('A4', 'portrait');
+			$dompdf->render();
+			$filename = "laporan_aset.pdf";
+					
+			$dompdf->stream($filename, array("Attachment" => 0));
+
 
 		}
 
@@ -595,28 +587,31 @@
 		}
 
 
-		function cetak_peminjaman(){
-
+		public function cetak_peminjaman() {
 			$kode = $this->input->get('kode');
-			
 			$data['pinjam'] = $this->db->get_where('tbl_peminjaman', ['kode' => $kode])->row_array();
+			
+			// var_dump($data);exit;
 
-			// $data['pinjam'] = $this->db->get('tbl_peminjaman')->row_array();
+			// Render HTML dari view
+			$html = $this->load->view('app/cetak_peminjaman', $data, true);
+		
+			$this->load->library('dompdf_gen');
+			$dompdf = new Dompdf_gen(); // <-- buat objek sendiri
+			$dompdf->loadHtml($html);
+			$dompdf->setPaper('A4', 'portrait');
+			$dompdf->render();
+			$nama = preg_replace('/[^A-Za-z0-9_\-]/', '_', $data['pinjam']['nama_peminjam']);
+			$tanggal = preg_replace('/[^0-9\-]/', '', $data['pinjam']['tgl_peminjaman']);
+			$filename = "surat_peminjaman_aset_{$nama}_{$tanggal}.pdf";
+					
+			$dompdf->stream($filename, array("Attachment" => 0));
 
-			$this->load->library('Dompdf_gen');
-			$this->load->view('app/cetak_peminjaman', $data);
-
-			$paper_size = "A4";
-			$orientatation = "Portrait";
-			$html = $this->output->get_output();
-
-			$this->dompdf->set_paper($paper_size, $orientatation);
-			$this->dompdf->load_html($html);
-
-			$this->dompdf->render();
-			$this->dompdf->stream("surat_pemijaman_aset.pdf", array('Attachment' => 0));
 
 		}
+		
+		
+		
 
 
 		function data_denda(){

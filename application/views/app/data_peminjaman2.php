@@ -71,7 +71,7 @@
                       ?>
                     </td>
                     <td>
-                      <button type="button" class="btn btn-primary" onclick="window.open('cetak_peminjaman?kode=<?= $data['kode'] ?>', '_blank')"><i class="fas fa-print"></i> Cetak</button>
+                      <button type="button" class="btn btn-primary" onclick="window.open('<?= base_url('app/cetak_peminjaman?kode=' . $data['kode']) ?>', '_blank')"><i class="fas fa-print"></i> Cetak</button>
                       <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModaledit<?= $data['id'] ?>"><i class="fa fa-pen"></i> Edit</button>
 
                       <a href="#" class="btn btn-primary btn-sm my-3" data-toggle="modal" data-target="#exampleModaldetail<?= $data['id'] ?>"><i class="fa fa-eye"></i> Detail</a>

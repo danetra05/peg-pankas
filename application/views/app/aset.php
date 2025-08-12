@@ -16,7 +16,7 @@
     <div class="jumbotron jumbotron-fluid">
       <div class="container">
         <h1 class="display-4">Aset <?= $aset['nama_aset'] ?></h1>
-        <p class="lead">Data aset Universitas Harapan Medan</p>
+        <p class="lead">Data Aset</p>
         <hr>
         <div class="card">
           <div class="card-body">

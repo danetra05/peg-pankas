@@ -45,8 +45,8 @@
                     <label for="exampleInputEmail1">Jabatan</label>
                     <select class="form-control" name="jabatan">
                       <option>-- Pilih --</option>
-                      <option>Administrasi</option>
-                      <option>Kepala Dinas</option>
+                      <option>Kepala Kantor</option>
+                      <option>Komisi PEG</option>
                       <option>Staff</option>
                     </select>
                   </div>
@@ -131,8 +131,8 @@
                             <select class="form-control" name="jabatan">
                               <option><?= $data['jabatan'] ?></option>
                               <option>-- Pilih --</option>
-                              <option>Administrasi</option>
-                              <option>Kepala Dinas</option>
+                              <option>Kepala Kantor</option>
+                              <option>Komisi PEG</option>
                               <option>Staff</option>
                             </select>
                           </div>

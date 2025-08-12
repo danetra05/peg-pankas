@@ -1,53 +1,95 @@
 <!DOCTYPE html>
  <html><head>
- 	<title>Laporan Data Asset</title>
+ <title>
+    LAPORAN ASET
+</title>
 
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <style>
-   table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-  },
+	<style>
+		#table {
+			font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+			border-collapse: collapse;
+			width: 100%;
+		}
 
-</style>
+		#table td, #table th {
+			border: 1px solid #ddd;
+			padding: 8px;
+		}
+
+		#table tr:nth-child(even){background-color: #f2f2f2;}
+
+		#table tr:hover {background-color: #ddd;}
+
+		#table th {
+			padding-top: 10px;
+			padding-bottom: 10px;
+			text-align: left;
+			background-color: #4CAF50;
+			color: white;
+		}
+	</style>
 </head><body>
-  <h4 style="font-weight:bold; margin-bottom: 10px; text-align: center;">PEMERINTAH KABUPATEN BREBES<br>
-  DINAS KOMUNIKASI INFORMATIKA DAN STATISTIK</h4>
-  <p style="font-style: italic; text-align: center;">Jl. MT Haryono No.76 Saditan Baru Kecamatan Brebes Kabupaten Brebes 52212</p>
+  <h4 style="font-weight:bold; margin-bottom: 10px; text-align: center;">GPIB PANCARAN KASIH DEPOK<br> </h4>
+  <p style="font-style: italic; text-align: center;">Jl. Tole Iskandar No. 27 Depok 16415</p>
   <hr>
-  <h4 style="font-weight:bold; margin-bottom: 50px; text-align: center;">DATA ASET</h4>
-  
-  	<table class="table table-bordered">
-		<thead>
-			<tr>
-				<th>No</th>
-				<th>Kode</th>
-				<th>Nama Aset</th>
-				<th>Kategori</th>
-				<th>Kualitas</th>
-				<th>Lokasi Aset</th>
-				<th>Harga</th>
-				<th>Toko Pembelian</th>
-			</tr>
-		</thead>
-		<tbody>
-			<?php $no=1; foreach($aset as $a): ?>
-			<tr>
-				<td><?= $no++ ?></td>
-				<td><?= $a['kode'] ?></td>
-				<td><?= $a['nama_aset'] ?></td>
-				<td><?= $a['kategori'] ?></td>
-				<td><?= $a['kualitas'] ?></td>
-				<td><?= $a['lokasi_aset'] ?></td>
-				<td><?= number_format($a['harga_pembelian'], 0, ',', '.') ?></td>
-				<td><?= $a['toko_pembelian'] ?></td>
-			</tr>
-			<?php endforeach; ?>
-		</tbody>
-	</table>
+  <h4 style="font-weight:bold; margin-bottom: 10px; text-align: center;">LAPORAN DATA ASET</h4>
+  <p>Pada tanggal ini <?= date('H M Y') ?> saya yang bertanda tangan di bawah ini : </p>
+  <table id="table" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Kode</th>
+            <th>Nama Aset</th>
+            <th>Kategori</th>
+            <th>Kualitas</th>
+            <th>Lokasi Aset</th>
+            <th>Harga</th>
+            <th>Toko Pembelian</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php $no=1; foreach($aset as $a): ?>
+        <tr>
+            <td><?= $no++ ?></td>
+            <td><?= $a['kode'] ?></td>
+            <td><?= $a['nama_aset'] ?></td>
+            <td><?= $a['kategori'] ?></td>
+            <td><?= $a['kualitas'] ?></td>
+            <td><?= $a['lokasi_aset'] ?></td>
+            <td>Rp<?= number_format($a['harga_pembelian'], 0, ',', '.') ?></td>
+            <td><?= $a['toko_pembelian'] ?></td>
+        </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
   <br>
   <br>
+  <p style="text-align: center; font-weight: bold;">Kami yang bertanda tangan dibawah ini</p>
+  <br>
+  <br>
+  <br>
+  <br>
+  <table border="0">
+    <tr>
+      <td width="">Peminjam</td>
+      <td width="370"></td>
+      <td width="">Pemilik Barang</td>
+    </tr>
+  </table>
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <table border="0">
+    <tr>
+      <td width="">(..............)</td>
+      <td width="370">.</td>
+      <td width="">(.....................)</td>
+    </tr>
+  </table>
   <div style="position: absolute;top: 95%">
    <hr >
    <p style="font-style: italic;">Dicetak pada tanggal <?= date('H M Y') ?>.

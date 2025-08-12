@@ -65,7 +65,7 @@
                   <td>
                     <?php 
                     if ($data['status'] == 0) {
-                      echo "<p class='text-danger'>Belum dikembalikan</p>"
+                      echo "<p class='text-danger'>Belum dikembalikan</p>";
                     }
                     ?>
                   </td>
