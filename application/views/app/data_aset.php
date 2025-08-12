@@ -120,6 +120,7 @@
         </div>
 
         <button type="submit" class="btn btn-success" id="cetakqr" >Cetak QR Aset</button>
+        <button type="button" class="btn btn-danger" id="cetakaset" >Cetak Laporan Data</button>
         <form method="post" action="<?= base_url('app/cetakqr') ?>" target="_blank">
 
           <button type="submit" class="btn btn-primary" id="actklik" style="display:none">Cetak QR</button>
@@ -414,6 +415,11 @@
       $("#actklik").trigger('click'); 
 
     })
+
+		$("#cetakaset").click(function(e) {
+			e.preventDefault();
+			window.open("<?= site_url('app/cetak_aset'); ?>", "_blank");
+		})
 
   })
 </script>

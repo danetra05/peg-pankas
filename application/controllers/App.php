@@ -290,6 +290,35 @@
 			$this->load->view('template/footer');
 		}
 
+		function cetak_aset(){
+
+			// $kode = $this->input->get('kode');
+			
+			// $data['pinjam'] = $this->db->get_where('tbl_peminjaman', ['kode' => $kode])->row_array();
+			$data['aset'] = $this->db->get('tbl_aset')->result_array();
+			$data['kategori'] = $this->db->get('tbl_kategori')->result_array();
+			$data['kualitas'] = $this->db->get('tbl_kualitas')->result_array();
+			$data['lokasi'] = $this->db->get('tbl_lokasi')->result_array();
+
+			// $data['pinjam'] = $this->db->get('tbl_peminjaman')->row_array();
+
+			// panggil library yang kita buat sebelumnya yang bernama pdfgenerator
+			$this->load->library('pdfgenerator');
+        
+			// filename dari pdf ketika didownload
+			$file_pdf = 'laporan_aset';
+			// setting paper
+			$paper = 'A4';
+			//orientasi paper potrait / landscape
+			$orientation = "landscape";
+			
+			$html = $this->load->view('app/cetak_aset', $data, true);	    
+			
+			// run dompdf
+			$this->pdfgenerator->generate($html, $file_pdf,$paper,$orientation);
+
+		}
+
 		function generateQr($data){
 
 
